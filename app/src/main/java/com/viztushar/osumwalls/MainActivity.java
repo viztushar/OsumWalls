@@ -68,31 +68,6 @@ public class MainActivity extends AppCompatActivity implements GetWallpapers.Cal
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-                if (scroll) {
-                    getActionBar().hide();
-                } else {
-                    getActionBar().show();
-                }
-            }
-
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                if (dy > 70) {
-                    //scroll down
-                    scroll = true;
-
-                } else if (dy < -5) {
-                    //scroll up
-                    scroll = false;
-                }
-
-            }
-        });
         recyclerView.setAdapter(new WallAdapter(this,items));
     }
 }
