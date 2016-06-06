@@ -68,6 +68,8 @@ public class MainActivity extends AppCompatActivity implements GetWallpapers.Cal
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+
         recyclerView.setAdapter(new WallAdapter(this,items));
     }
 }
