@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Osum Walls</string>
+
+    <string name="wall_url">https://raw.githubusercontent.com/viztushar/Material-HD-Wallpaper/master/material.json</string>
+    <string name="wallpaper_downloaded">Wallpaper was downloaded to: %1$s</string>
+    <string name="error">Error</string>
+    <string name="no_conn_title">No connection found</string>
+
+    <string name="md_error_label">@string/error</string>
+    <string name="md_storage_perm_error">You have not granted the \"Read External Storage\" permission to %1$s, which is needed to complete this action.</string>
+    <!--Wallpaper folder path-->
+    <string name="walls_save_location">"/Osum Wall/Wallpapers/"</string>
+    <string name="walls_downloading">Downloading</string>
+
+</resources>
