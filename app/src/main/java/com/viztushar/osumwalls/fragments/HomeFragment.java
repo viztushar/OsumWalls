@@ -56,6 +56,10 @@ public class HomeFragment extends Fragment implements GetWallpapers.Callbacks {
     private DrawerLayout drawer;
     String wall;
 
+    public HomeFragment() {
+
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
@@ -142,7 +146,7 @@ public class HomeFragment extends Fragment implements GetWallpapers.Callbacks {
                     JSONArray jsonMainNode = jsonResponse.optJSONArray(wall);
                     for (int i = 0; i < jsonMainNode.length(); i++) {
                         JSONObject jsonChildNode = jsonMainNode.getJSONObject(i);
-                        items.add(new WallpaperItem(jsonChildNode.optString("name"),
+                        items.add(new WallpaperItem(getContext(),jsonChildNode.optString("name"),
                                 jsonChildNode.optString("author"),
                                 jsonChildNode.optString("url"),
                                 jsonChildNode.optString("thumb")));

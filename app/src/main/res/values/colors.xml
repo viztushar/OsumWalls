@@ -5,4 +5,7 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="mat_text_light">#ffffffff</color>
+
+    <color name="textColorPrimary">#fff</color>
+    <color name="textColorSecondary">#fcfbfb</color>
 </resources>

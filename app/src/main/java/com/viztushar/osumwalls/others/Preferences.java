@@ -22,7 +22,7 @@ public class Preferences {
         this.context = context;
     }
 
-    private SharedPreferences getSharedPreferences() {
+    public SharedPreferences getSharedPreferences() {
         return context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE);
     }
 

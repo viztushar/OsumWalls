@@ -3,25 +3,31 @@ package com.viztushar.osumwalls.activities;
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.WallpaperManager;
-import android.content.Intent;
+import android.content.Context;
 import android.content.pm.PackageManager;
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.graphics.Palette;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
+
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
@@ -32,21 +38,14 @@ import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.request.transition.Transition;
-import com.github.clans.fab.FloatingActionButton;
-import com.github.clans.fab.FloatingActionMenu;
 import com.viztushar.osumwalls.R;
 import com.viztushar.osumwalls.dialogs.ISDialogs;
 import com.viztushar.osumwalls.items.WallpaperItem;
-import com.viztushar.osumwalls.others.PermissionUtils;
 import com.viztushar.osumwalls.others.Preferences;
 import com.viztushar.osumwalls.others.Utils;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -56,42 +55,34 @@ public class ApplyWallpaper extends AppCompatActivity implements View.OnClickLis
 
     ImageView imageView;
     ProgressBar mProgress;
-    private FloatingActionMenu menufab;
     private FloatingActionButton fab1;
-    private FloatingActionButton fab2;
-    private FloatingActionButton fab3;
-    public String walls, saveWallLocation,wallname;
+    public String walls, saveWallLocation, wallname;
     Activity context;
     Preferences mPrefs;
+    TextView mTextWall;
+    LinearLayout wallbg;
+    WallpaperItem wallpaperItem;
 
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.apply_wallpaper);
-        context =this;
-       mPrefs = new Preferences(this);
+        setContentView(R.layout.activity_wallpaper);
+        context = this;
+        mPrefs = new Preferences(this);
         saveWallLocation = Environment.getExternalStorageDirectory().getAbsolutePath()
                 + context.getResources().getString(R.string.walls_save_location);
         imageView = (ImageView) findViewById(R.id.walls2);
         mProgress = (ProgressBar) findViewById(R.id.progress);
         mProgress.setVisibility(View.VISIBLE);
-        menufab = (FloatingActionMenu) findViewById(R.id.menu_labels_right);
-        fab1 = (FloatingActionButton) findViewById(R.id.quick_spply);
-        fab1.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-        fab2 = (FloatingActionButton) findViewById(R.id.fav);
-        fab2.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-        fab3 = (FloatingActionButton) findViewById(R.id.save);
-        fab3.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+        mTextWall = (TextView) findViewById(R.id.wallname);
+        wallbg = (LinearLayout) findViewById(R.id.wallbg);
+        fab1 = (FloatingActionButton) findViewById(R.id.fav_fab);
+//        if(wallpaperItem.favorite) fab1.setImageResource(R.drawable.ic_favorite_border);
         fab1.setOnClickListener(this);
-        fab2.setOnClickListener(this);
-        fab3.setOnClickListener(this);
 
         Window w = getWindow();
-        w.setFlags(
-                WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION,
-                WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         w.setFlags(
                 WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
                 WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -99,6 +90,8 @@ public class ApplyWallpaper extends AppCompatActivity implements View.OnClickLis
         walls = getIntent().getStringExtra("walls");
         wallname = getIntent().getStringExtra("wallname");
         Log.d("tag", "onCreate() returned: " + walls);
+        mTextWall.setText(wallname);
+
         if (walls != null) {
             Glide.with(this)
                     .load(walls)
@@ -120,51 +113,41 @@ public class ApplyWallpaper extends AppCompatActivity implements View.OnClickLis
                     .into(imageView);
         }
 
+        Glide.with(this)
+                .asBitmap()
+                .load(walls)
+                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL))
+                .into(new SimpleTarget<Bitmap>() {
+                    @Override
+                    public void onResourceReady(Bitmap resource, Transition<? super Bitmap> transition) {
+                        if (resource != null) {
+                            Palette.from(resource).generate(new Palette.PaletteAsyncListener() {
+                                @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+                                @Override
+                                public void onGenerated(Palette palette) {
+                                    setColors(context, palette);
+                                }
+                            });
+                        }
+                    }
+                });
+
+
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public void setColors(Context colors, Palette palette) {
+        // getWindow().setStatusBarColor(ContextCompat.getColor(colors, palette.getLightMutedColor(Color.DKGRAY)));
+        fab1.setBackgroundTintList(ColorStateList.valueOf(palette.getDarkVibrantColor(Color.DKGRAY)));
+        wallbg.setBackgroundColor(palette.getLightVibrantColor(Color.DKGRAY));
 
     }
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
     @Override
     public void onClick(View view) {
-
-        switch (view.getId()) {
-
-            case R.id.quick_spply:
-                final WallpaperManager manager = WallpaperManager.getInstance(this);
-                Glide.with(this)
-                        .asBitmap()
-                        .load(walls)
-                        .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL))
-                        .into(new SimpleTarget<Bitmap>() {
-                            @Override
-                            public void onResourceReady(Bitmap resource, Transition<? super Bitmap> transition) {
-                                try {
-                                    manager.setBitmap(resource);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                        });
-                Snackbar.make(findViewById(R.id.menu_labels_right), "Wallpaper Set!!", Snackbar.LENGTH_SHORT).show();
-                break;
-
-
-
-            case R.id.save:
-                if (!PermissionUtils.canAccessStorage(context)) {
-                    PermissionUtils.setViewerActivityAction("save");
-                    PermissionUtils.requestStoragePermission(context);
-                } else {
-                    showDialogs("save");
-                }
-                break;
-
-            case R.id.fav:
-
-                break;
-
-        }
-
+//        fab1.setImageResource(wallpaperItem.favorite ? R.drawable.ic_favorite : R.drawable.ic_favorite_border);
+        wallpaperItem.setFav(ApplyWallpaper.this, !wallpaperItem.favorite);
     }
 
 
@@ -178,7 +161,7 @@ public class ApplyWallpaper extends AppCompatActivity implements View.OnClickLis
                 final File destFile = new File(saveWallLocation, wallName + ".png");
                 destFile.getParentFile().mkdirs();
                 destFile.delete();
-                Log.i("location", "run: "+destFile);
+                Log.i("location", "run: " + destFile);
                 String snackbarText;
                 if (!destFile.exists()) {
                     try {
@@ -193,7 +176,7 @@ public class ApplyWallpaper extends AppCompatActivity implements View.OnClickLis
                     snackbarText = context.getString(R.string.wallpaper_downloaded,
                             destFile.getAbsolutePath());
                 }
-                 final String finalSnackbarText = snackbarText;
+                final String finalSnackbarText = snackbarText;
                 context.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -210,7 +193,7 @@ public class ApplyWallpaper extends AppCompatActivity implements View.OnClickLis
     private void saveWallpaperAction(final String name, String url) {
         final MaterialDialog downloadDialog = ISDialogs.showDownloadDialog(this);
         downloadDialog.show();
-        Log.i("savewall", "saveWallpaperAction: "+ url);
+        Log.i("savewall", "saveWallpaperAction: " + url);
         Glide.with(this)
                 .asBitmap()
                 .load(url)
@@ -219,6 +202,16 @@ public class ApplyWallpaper extends AppCompatActivity implements View.OnClickLis
                     @Override
                     public void onResourceReady(Bitmap resource, Transition<? super Bitmap> transition) {
                         if (resource != null) {
+                            Palette.from(resource).generate(new Palette.PaletteAsyncListener() {
+                                @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+                                @Override
+                                public void onGenerated(Palette palette) {
+                                    fab1.setBackgroundTintList(ColorStateList.valueOf(palette.getDarkMutedColor(Color.DKGRAY)));
+                                    wallbg.setBackgroundColor(palette.getLightMutedColor(Color.DKGRAY));
+                                    if (Build.VERSION.SDK_INT >= 21)
+                                        context.getWindow().setStatusBarColor(ContextCompat.getColor(context, palette.getLightMutedColor(Color.DKGRAY)));
+                                }
+                            });
                             saveWallpaper(context, name, downloadDialog, resource);
                         }
                     }
@@ -251,7 +244,6 @@ public class ApplyWallpaper extends AppCompatActivity implements View.OnClickLis
         }
 
     }
-
 
 
 }
