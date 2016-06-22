@@ -25,13 +25,8 @@ import java.util.List;
  */
 public class GetWallpapers extends AsyncTask<Void, Void, Void> {
 
-    public interface Callbacks {
-        public void onListLoaded(String jsonResult);
-    }
-
     private String url, jsonResult;
     private Callbacks callbacks;
-
     public GetWallpapers(Context context, Callbacks callbacks) {
         this.callbacks = callbacks;
         url = context.getResources().getString(R.string.wall_url);
@@ -41,12 +36,14 @@ public class GetWallpapers extends AsyncTask<Void, Void, Void> {
     protected Void doInBackground(Void... z) {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         HttpClient httpclient = new DefaultHttpClient();
+
         HttpPost httppost = new HttpPost(url);
         try {
             httppost.setEntity(new UrlEncodedFormEntity(params));
             HttpResponse response = httpclient.execute(httppost);
             jsonResult = inputStreamToString(response.getEntity().getContent())
                     .toString();
+            Log.i("response", "doInBackground: "+ jsonResult);
         } catch (ClientProtocolException e) {
             Log.e("e", "error1");
             e.printStackTrace();
@@ -77,6 +74,10 @@ public class GetWallpapers extends AsyncTask<Void, Void, Void> {
         if (callbacks != null)
             callbacks.onListLoaded(jsonResult);
         super.onPostExecute(aVoid);
+    }
+
+    public interface Callbacks {
+        public void onListLoaded(String jsonResult);
     }
 
 }

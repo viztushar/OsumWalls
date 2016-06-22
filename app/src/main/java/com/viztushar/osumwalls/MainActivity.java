@@ -1,11 +1,7 @@
 package com.viztushar.osumwalls;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.os.Build;
-import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
@@ -13,25 +9,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 
 import com.viztushar.osumwalls.activities.FavWallaper;
-import com.viztushar.osumwalls.adapter.WallAdapter;
 import com.viztushar.osumwalls.fragments.HomeFragment;
-import com.viztushar.osumwalls.items.WallpaperItem;
-import com.viztushar.osumwalls.tasks.GetWallpapers;
-
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,8 +24,10 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private Context context;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context = this;
@@ -89,12 +76,6 @@ public class MainActivity extends AppCompatActivity {
                         item.setChecked(true);
                         HomeFragment fragment1 = new HomeFragment("walls2");
                         switchFragment(fragment1, true);
-                        mDrawerLayout.closeDrawers();
-                        break;
-                    case R.id.navigation_favorites:
-                        item.setChecked(true);
-                        Intent intent=new Intent(getApplicationContext(), FavWallaper.class);
-                        startActivity(intent);
                         mDrawerLayout.closeDrawers();
                         break;
                     case R.id.navigation_material:
@@ -156,6 +137,13 @@ public class MainActivity extends AppCompatActivity {
                     .replace(R.id.fragment_holder, fragment).commit();
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -3,18 +3,12 @@ package com.viztushar.osumwalls.fragments;
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
+import android.graphics.Point;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -23,6 +17,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -30,11 +25,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
-import com.afollestad.materialdialogs.DialogAction;
-import com.afollestad.materialdialogs.MaterialDialog;
-import com.viztushar.osumwalls.BuildConfig;
 import com.viztushar.osumwalls.MainActivity;
 import com.viztushar.osumwalls.R;
 import com.viztushar.osumwalls.adapter.WallAdapter;
@@ -49,15 +40,24 @@ import java.util.ArrayList;
 
 public class HomeFragment extends Fragment implements GetWallpapers.Callbacks {
 
+    String wall;
     private View mainView;
     private Context context;
     private RecyclerView recyclerView;
     private ArrayList<WallpaperItem> items;
     private DrawerLayout drawer;
-    String wall;
+
 
     public HomeFragment() {
 
+    }
+
+    @SuppressLint("ValidFragment")
+    public HomeFragment(String wall) {
+        this.wall = wall;
+        if (wall != null) {
+            Log.i("wallpaper", "onCreateView: " + wall);
+        }
     }
 
     @Nullable
@@ -69,18 +69,9 @@ public class HomeFragment extends Fragment implements GetWallpapers.Callbacks {
         init();
 
         items = new ArrayList<>();
-        new GetWallpapers(context,this).execute();
+        new GetWallpapers(context, this).execute();
         return mainView;
     }
-
-    @SuppressLint("ValidFragment")
-    public HomeFragment(String wall){
-        this.wall=wall;
-        if(wall != null){
-            Log.i("wallpaper", "onCreateView: "+wall);
-        }
-    }
-
 
     private void init() {
         setHasOptionsMenu(true);
@@ -112,11 +103,6 @@ public class HomeFragment extends Fragment implements GetWallpapers.Callbacks {
     }
 
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu, menu);
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -143,13 +129,14 @@ public class HomeFragment extends Fragment implements GetWallpapers.Callbacks {
             if (jsonResult != null) {
                 try {
                     JSONObject jsonResponse = new JSONObject(jsonResult);
-                    JSONArray jsonMainNode = jsonResponse.optJSONArray(wall);
+                    JSONArray jsonMainNode = jsonResponse.optJSONArray("walls");
                     for (int i = 0; i < jsonMainNode.length(); i++) {
                         JSONObject jsonChildNode = jsonMainNode.getJSONObject(i);
-                        items.add(new WallpaperItem(getContext(),jsonChildNode.optString("name"),
+                        items.add(new WallpaperItem(jsonChildNode.optString("name"),
                                 jsonChildNode.optString("author"),
                                 jsonChildNode.optString("url"),
                                 jsonChildNode.optString("thumb")));
+                        Log.i("Respones", "onListLoaded: " + jsonResponse);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -158,13 +145,19 @@ public class HomeFragment extends Fragment implements GetWallpapers.Callbacks {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        recyclerView = (RecyclerView)mainView.findViewById(R.id.recycler_view);
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(context, 2);
+        Log.i("Respones", "onListLoaded: " + jsonResult);
+       /* Display display = getActivity().getWindowManager().getDefaultDisplay();
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        display.getMetrics(outMetrics);
+        float density  = getResources().getDisplayMetrics().density;
+        float dpWidth  = outMetrics.widthPixels / density;
+        int columns = Math.round(dpWidth/200);*/
+        recyclerView = (RecyclerView) mainView.findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        RecyclerView.LayoutManager mLayoutManager;
+        mLayoutManager = new GridLayoutManager(context, 2);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-
-
-        recyclerView.setAdapter(new WallAdapter(context,items));
+        recyclerView.setAdapter(new WallAdapter(context, items));
     }
 }

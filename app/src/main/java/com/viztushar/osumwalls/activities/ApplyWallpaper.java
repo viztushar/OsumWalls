@@ -51,18 +51,18 @@ import java.io.FileOutputStream;
 /**
  * Created by Tushar on 15-05-2016.
  */
-public class ApplyWallpaper extends AppCompatActivity implements View.OnClickListener {
+public class ApplyWallpaper extends AppCompatActivity {
 
+    public String walls, saveWallLocation, wallname;
+    public Window w = getWindow();
     ImageView imageView;
     ProgressBar mProgress;
-    private FloatingActionButton fab1;
-    public String walls, saveWallLocation, wallname;
     Activity context;
     Preferences mPrefs;
     TextView mTextWall;
     LinearLayout wallbg;
     WallpaperItem wallpaperItem;
-
+    private FloatingActionButton fab1;
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
     @Override
@@ -80,9 +80,14 @@ public class ApplyWallpaper extends AppCompatActivity implements View.OnClickLis
         wallbg = (LinearLayout) findViewById(R.id.wallbg);
         fab1 = (FloatingActionButton) findViewById(R.id.fav_fab);
 //        if(wallpaperItem.favorite) fab1.setImageResource(R.drawable.ic_favorite_border);
-        fab1.setOnClickListener(this);
+       fab1.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               finish();
+           }
+       });
 
-        Window w = getWindow();
+        final Window w = getWindow();
         w.setFlags(
                 WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
                 WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -126,6 +131,7 @@ public class ApplyWallpaper extends AppCompatActivity implements View.OnClickLis
                                 @Override
                                 public void onGenerated(Palette palette) {
                                     setColors(context, palette);
+                                    w.setNavigationBarColor(palette.getLightVibrantColor(Color.DKGRAY));
                                 }
                             });
                         }
@@ -135,20 +141,14 @@ public class ApplyWallpaper extends AppCompatActivity implements View.OnClickLis
 
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    @TargetApi(Build.VERSION_CODES.M)
     public void setColors(Context colors, Palette palette) {
-        // getWindow().setStatusBarColor(ContextCompat.getColor(colors, palette.getLightMutedColor(Color.DKGRAY)));
         fab1.setBackgroundTintList(ColorStateList.valueOf(palette.getDarkVibrantColor(Color.DKGRAY)));
         wallbg.setBackgroundColor(palette.getLightVibrantColor(Color.DKGRAY));
 
     }
 
-    @TargetApi(Build.VERSION_CODES.KITKAT)
-    @Override
-    public void onClick(View view) {
-//        fab1.setImageResource(wallpaperItem.favorite ? R.drawable.ic_favorite : R.drawable.ic_favorite_border);
-        wallpaperItem.setFav(ApplyWallpaper.this, !wallpaperItem.favorite);
-    }
+
 
 
     private void saveWallpaper(final Activity context, final String wallName,
@@ -181,7 +181,7 @@ public class ApplyWallpaper extends AppCompatActivity implements View.OnClickLis
                     @Override
                     public void run() {
                         downloadDialog.dismiss();
-                        Snackbar.make(findViewById(R.id.menu_labels_right), finalSnackbarText, Snackbar.LENGTH_SHORT).show();
+                        Snackbar.make(findViewById(R.id.wallbg), finalSnackbarText, Snackbar.LENGTH_SHORT).show();
 
                     }
                 });
@@ -239,7 +239,7 @@ public class ApplyWallpaper extends AppCompatActivity implements View.OnClickLis
 
                 }
             } else {
-                Snackbar.make(findViewById(R.id.menu_labels_right), R.string.no_conn_title, Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(findViewById(R.id.wallbg), R.string.no_conn_title, Snackbar.LENGTH_SHORT).show();
             }
         }
 

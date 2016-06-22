@@ -3,9 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-
     <color name="mat_text_light">#ffffffff</color>
-
     <color name="textColorPrimary">#fff</color>
     <color name="textColorSecondary">#fcfbfb</color>
+    <color name="white">#fcfbfb</color>
+    <color name="white_300">#e0e0e0</color>
 </resources>

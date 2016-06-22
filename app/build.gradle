@@ -44,5 +44,6 @@ dependencies {
     compile('com.github.afollestad.material-dialogs:core:0.8.5.8@aar') {
         transitive = true
     }
-    compile 'com.google.code.gson:gson:2.6.2'
+    compile 'com.android.volley:volley:1.0.0'
+    compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
 }

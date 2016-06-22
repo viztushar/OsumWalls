@@ -11,10 +11,6 @@
             android:icon="@drawable/drawer_new"
             android:title="@string/nav_new" />
         <item
-            android:id="@+id/navigation_favorites"
-            android:icon="@drawable/drawer_favorites"
-            android:title="@string/nav_favorites" />
-        <item
             android:id="@+id/navigation_material"
             android:icon="@drawable/drawer_material"
             android:title="@string/nav_material" />

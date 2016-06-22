@@ -26,11 +26,11 @@ import java.util.ArrayList;
 
 public class FavWallaper extends AppCompatActivity implements GetWallpapers.Callbacks {
 
+    public WallAdapter mAdapter;
+    Preferences mPre;
     private Toolbar toolbar;
     private RecyclerView recyclerView;
     private ArrayList<WallpaperItem> items;
-    Preferences mPre;
-    public WallAdapter mAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,7 +56,7 @@ public class FavWallaper extends AppCompatActivity implements GetWallpapers.Call
                     JSONArray jsonMainNode = jsonResponse.optJSONArray("walls");
                     for (int i = 0; i < jsonMainNode.length(); i++) {
                         JSONObject jsonChildNode = jsonMainNode.getJSONObject(i);
-                        items.add(new WallpaperItem(this,jsonChildNode.optString("name"),
+                        items.add(new WallpaperItem(jsonChildNode.optString("name"),
                                 jsonChildNode.optString("author"),
                                 jsonChildNode.optString("url"),
                                 jsonChildNode.optString("thumb")));

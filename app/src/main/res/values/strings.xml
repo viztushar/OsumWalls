@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Osum Walls</string>
 
-    <string name="wall_url">https://raw.githubusercontent.com/viztushar/Material-HD-Wallpaper/master/material.json</string>
+    <string name="wall_url">http://pastebin.com/raw/ju6VMtXx</string>
     <string name="wallpaper_downloaded">Wallpaper was downloaded to: %1$s</string>
     <string name="error">Error</string>
     <string name="no_conn_title">No connection found</string>
@@ -14,6 +14,9 @@
 
     <string name="open">open</string>
     <string name="close">close</string>
+    <string name="share">Share Theme</string>
+    <string name="sendemail">Email Developer</string>
+    <string name="changelog">See Changelog</string>
 
     <string name="nav_all">All</string>
     <string name="nav_new">New</string>

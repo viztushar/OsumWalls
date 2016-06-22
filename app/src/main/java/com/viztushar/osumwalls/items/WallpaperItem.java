@@ -12,22 +12,16 @@ import com.viztushar.osumwalls.others.Preferences;
  */
 public class WallpaperItem {
 
-    private String name, author, url, thumb;
     public boolean favorite;
+    private String name, author, url, thumb;
 
-    public WallpaperItem(Context context, String name, String author, String url, String thumb) {
+    public WallpaperItem(String name, String author, String url, String thumb) {
         this.name = name;
         this.author = author;
         this.url = url;
         this.thumb = thumb;
-        favorite = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(url, false);
-        Log.i("TAG", "WallpaperItem: "+ favorite);
     }
 
-    public void setFav(Context context, boolean favorite){
-        PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean(url,false).apply();
-        this.favorite = favorite;
-    }
     public String getName() {
         return name;
     }
