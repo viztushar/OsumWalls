@@ -7,4 +7,5 @@
     <dimen name="small_padding">8.0dip</dimen>
     <dimen name="mat_text_subhead">16.0sp</dimen>
     <integer name="wall_columns">2</integer>
+    <dimen name="appbar_elevation">4dp</dimen>
 </resources>

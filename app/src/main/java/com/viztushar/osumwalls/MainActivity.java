@@ -2,38 +2,63 @@ package com.viztushar.osumwalls;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Build;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-
-import com.viztushar.osumwalls.activities.FavWallaper;
+import com.viztushar.osumwalls.activities.SettingsActivity;
 import com.viztushar.osumwalls.fragments.HomeFragment;
+import com.viztushar.osumwalls.others.Utils;
+
+import static com.viztushar.osumwalls.others.Utils.PREF_COLORED_NAV;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String PREF_DARK_THEME = "dark_theme";
+    public boolean isTheme,isColorednav;
+    SharedPreferences mPref;
     private NavigationView navigationView;
     private DrawerLayout mDrawerLayout;
     private Context context;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.AppTheme);
+        mPref = PreferenceManager.getDefaultSharedPreferences(this);
+        isTheme = mPref.getBoolean(PREF_DARK_THEME,false);
+        Utils.mTheme = isTheme;
+        if(isTheme) {setTheme(R.style.AppTheme_Dark);}
+        else {setTheme(R.style.AppTheme);}
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context = this;
-        switchFragment(new HomeFragment("walls"),false);
+        switchFragment(new HomeFragment("walls"), false);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.main_drawerlayout);
         navigationView = (NavigationView) findViewById(R.id.main_navigationview);
+        isColorednav = mPref.getBoolean(PREF_COLORED_NAV,false);
+        Utils.coloredNavBar = isColorednav;
+
+        mSetNav();
+    }
+
+    public void mSetNav(){
+        if (isColorednav)
+        {
+            if (Build.VERSION.SDK_INT >= 21){
+                getWindow().setNavigationBarColor(ContextCompat.getColor(context,R.color.primary_dark));
+            }
+        }
     }
 
     public void updateToggleButton(Toolbar toolbar) {
@@ -71,7 +96,11 @@ public class MainActivity extends AppCompatActivity {
                         switchFragment(fragment, true);
                         mDrawerLayout.closeDrawers();
                         break;
-
+                   /* case R.id.navigation_fav:
+                        item.setChecked(true);
+                        startFavSection();
+                        mDrawerLayout.closeDrawers();
+                        break;*/
                     case R.id.navigation_new:
                         item.setChecked(true);
                         HomeFragment fragment1 = new HomeFragment("walls2");
@@ -116,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.navigation_about:
                         item.setChecked(true);
+                        startSettingSection();
                         mDrawerLayout.closeDrawers();
                         break;
 
@@ -123,7 +153,12 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-        }
+    }
+
+    private void startSettingSection() {
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
+    }
 
 
     public void switchFragment(Fragment fragment, boolean b) {
@@ -154,5 +189,12 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+
+    @Override
+    protected void onNewIntent(Intent intent)
+    {
+        super.onNewIntent(intent);
+    }
 
 }

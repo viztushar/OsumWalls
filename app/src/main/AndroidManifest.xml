@@ -31,11 +31,14 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.FavWallaper">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
+        <activity
+            android:name=".activities.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.Settings">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.viztushar.osumwalls.MainActivity" />
         </activity>
     </application>
 

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="General">
+        <Preference
+            android:key="join_community"
+            android:summary="@string/join_com"
+            android:title="Join Google+ Community"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="UI">
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="dark_theme"
+            android:summary="use Dark theme"
+            android:title="Dark Theme"/>
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="colored_nav"
+            android:summary="@string/colored_navbar_dec"
+            android:title="@string/colored_navbar_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/dev_title">
+        <Preference
+            android:key="developer_one"
+            android:summary="@string/dev_one_dec"
+            android:title="@string/dev_one"/>
+
+        <Preference
+            android:key="developer_two"
+            android:summary="@string/dev_two_dec"
+            android:title="@string/dev_two"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="About">
+
+        <Preference
+            android:key="version"
+            android:summary="@string/ver"
+            android:title="Version" />
+
+        <Preference
+            android:key="licenses"
+            android:summary="@string/licenses_wall_dec"
+            android:title="@string/licenses_wall"/>
+
+        <Preference
+            android:key="licenses_libs"
+            android:title="@string/licenses_libs"/>
+    </PreferenceCategory>
+</PreferenceScreen>

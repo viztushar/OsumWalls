@@ -27,6 +27,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.bumptech.glide.Glide;
@@ -85,6 +86,8 @@ public class ApplyWallpaper extends AppCompatActivity {
            public void onClick(View v) {
                finish();
            }
+
+           
        });
 
         final Window w = getWindow();
@@ -131,6 +134,7 @@ public class ApplyWallpaper extends AppCompatActivity {
                                 @Override
                                 public void onGenerated(Palette palette) {
                                     setColors(context, palette);
+                                   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
                                     w.setNavigationBarColor(palette.getLightVibrantColor(Color.DKGRAY));
                                 }
                             });
@@ -141,10 +145,29 @@ public class ApplyWallpaper extends AppCompatActivity {
 
     }
 
-    @TargetApi(Build.VERSION_CODES.M)
+   /* private void addToFavorites(String wall) {
+        SharedPreferences sharedPreferences = new SharedPreferences(getApplicationContext());
+        sharedPreferences.saveString("wallname",wallname);
+       sharedPreferences.saveBoolean(wall.toLowerCase().replaceAll(" ", "_").trim(), !sharedPreferences.getBoolean(wall.toLowerCase().replaceAll(" ", "_").trim(), false));
+        if (sharedPreferences.getBoolean(wall.toLowerCase().replaceAll(" ", "_").trim(), false)) {
+            //item.setIcon(getResources().getDrawable(R.drawable.ic_action_favorite));
+            String s = sharedPreferences.getString("wallname",wallname);
+            Log.i("TAG", "addToFavorites: "+s);
+            Toast.makeText(getApplicationContext(), "Wall added to favourites", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            // item.setIcon(getResources().getDrawable(R.drawable.ic_action_favorite_outline));
+            Toast.makeText(getApplicationContext(), "Wall removed from favourites", Toast.LENGTH_SHORT).show();
+        }
+
+    }*/
+
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void setColors(Context colors, Palette palette) {
         fab1.setBackgroundTintList(ColorStateList.valueOf(palette.getDarkVibrantColor(Color.DKGRAY)));
         wallbg.setBackgroundColor(palette.getLightVibrantColor(Color.DKGRAY));
+//        w.setNavigationBarColor(palette.getLightVibrantColor(Color.DKGRAY));
 
     }
 
@@ -244,6 +267,7 @@ public class ApplyWallpaper extends AppCompatActivity {
         }
 
     }
+
 
 
 }

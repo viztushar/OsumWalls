@@ -8,4 +8,9 @@
     <color name="textColorSecondary">#fcfbfb</color>
     <color name="white">#fcfbfb</color>
     <color name="white_300">#e0e0e0</color>
+
+    <color name="colorDarkPrimary">#3949ab</color>
+    <color name="colorDarkPrimaryDark">#3949ab</color>
+    <color name="colorDarkAccent">#00c853</color>
+    <color name="card_grey_dark_theme">#747D80</color>
 </resources>
