@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+<RadioButton
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/action_layout_1"
+    android:text="1 Columns"/>
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/action_layout_2"
+        android:layout_below="@+id/action_layout_1"
+        android:text="2 Columns"/>
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/action_layout_3"
+        android:layout_below="@+id/action_layout_2"
+        android:text="3 Columns"/>
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/action_layout_3"
+        android:layout_centerInParent="true"
+        android:id="@+id/btnDismiss"
+        android:text="Okay"/>
+
+</RelativeLayout>

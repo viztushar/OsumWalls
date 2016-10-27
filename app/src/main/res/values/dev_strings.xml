@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_activity_settings">Settings</string>
+    <string name="wallpaper_downloaded">Wallpaper was downloaded to: %1$s</string>
+    <string name="error">Error</string>
+    <string name="no_conn_title">No connection found</string>
+    <string name="md_error_label">@string/error</string>
+    <string name="md_storage_perm_error">You have not granted the \"Read External Storage\" permission to %1$s, which is needed to complete this action.</string>
+    <string name="walls_downloading">Downloading</string>
+
+    <!-- shortcut -->
+    <string name="static_shortcut_long_label">All</string>
+    <string name="static_shortcut_short_label">All</string>
+    <string name="static_shortcut_disabled_message">All</string>
+
+    <string name="static_shortcut_long_label_fav">Favorites</string>
+    <string name="static_shortcut_short_label_fav">Favorites</string>
+    <string name="static_shortcut_disabled_message_fav">Favorites</string>
+
+    <string name="added_favorites">Added to Favorites</string>
+    <string name="removed_favorites">Removed from Favorites</string>
+
+    <!-- no Connection error text -->
+    <string name="noc">Whoops!!</string>
+    <string name="no_con_text">Slow Or No Internet Connection.\nPlease Check Your Internet Settings.</string>
+
+    <string name="fav">Favorite</string>
+    <string name="title_activity_scrolling">ScrollingActivity</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_favorites_fragment">Favorites</string>
+    <string name="title_activity_scrolling22">ScrollingActivity22</string>
+
+    <string name="license">License Verification</string>
+    <string name="license_unsuccessful">The License Verification was not successful! Please consider downloading this app from the Play Store!</string>
+    <string name="download">Download</string>
+    <string name="exit">Exit</string>
+
+    <string name="open">open</string>
+    <string name="close">close</string>
+    <string name="share">Share Theme</string>
+    <string name="sendemail">Email Developer</string>
+    <string name="changelog">See Changelog</string>
+
+    <string name="colored_navbar_title">Colored Navigation Bar</string>
+    <string name="colored_navbar_dec">Provide color for navigation bar(Lollipop and above)</string>
+    <string name="dev_title">Developers</string>
+    <string name="dev_one">Tushar Parmar</string>
+    <string name="dev_one_dec"></string>
+    <string name="dev_one_link">https://plus.google.com/+viztushar</string>
+    <string name="dev_two">ERC Software</string>
+    <string name="dev_two_dec"></string>
+    <string name="dev_two_link">https://plus.google.com/+EthanCannon10</string>
+
+
+    <!-- licenses -->
+    <string name="licenses_title">Licenses</string>
+    <string name="licenses_wall">Copyright</string>
+    <string name="licenses_wall_dec">Wallpapers are licensed under Creative Commons Attribution 4.0 International License. All wallpapers have copyright to their original creators.</string>
+    <string name="licenses_libs">Open source library</string>
+
+    <string name="pref_open_to_walls_title">Open To New Walls</string>
+    <string name="pref_open_to_walls_desc">When opening the app, go straight to the new category</string>
+
+    <string name="pref_offline_title">Use offline mode</string>
+    <string name="pref_offline_desc">Your favorite walls will be saved to device storage, and the live wall switcher will alternate through them instead of downloading each time</string>
+
+    <string name="pref_live_wall_title">Enable Live Wall Switcher</string>
+    <string name="pref_live_wall_desc">Automatically switch the wallpaper every 3 minutes</string>
+
+
+    <string name="about_AppDescription">Built by ERC Software and Tushar Parmar.</string>
+    <string name="about_Licensing">All wallpapers are licensed to their original creators and are sourced under the Creative Commons Attribution 4.0 International License (CC By 4.0) \n \nVisit https://creativecommons.org/licenses/by/4.0/ for more info</string>
+
+
+    <string name="notif_settings_category_title">Notifications</string>
+    <string name="notif_summary">Receive notifications for new walls and updates for the app</string>
+    <string name="notif_settings_alert">Notifications</string>
+    <string name="notif_settings_vibrate">Vibrate</string>
+    <string name="notif_settings_sound">Sound</string>
+    <string name="notif_settings_lights">Lights</string>
+
+    <string name="back">Press BACK again to exit</string>
+    <string name="mailto">mailto:</string>
+
+
+</resources>

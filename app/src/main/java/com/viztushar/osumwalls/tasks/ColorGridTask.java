@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.support.v7.graphics.Palette;
 
+import com.viztushar.osumwalls.R;
 import com.viztushar.osumwalls.adapter.WallAdapter;
 
 
@@ -33,7 +34,7 @@ public class ColorGridTask extends AsyncTask<Void, Void, Void> {
                     @Override
                     public void onGenerated(final Palette palette) {
                         Integer colorFrom = context.getResources().getColor(android.R.color.white);
-                        Integer colorTo = palette.getVibrantColor(context.getResources().getColor(android.R.color.white));
+                        Integer colorTo = palette.getVibrantColor(context.getResources().getColor(R.color.card_grey_dark_theme));
                         colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
                         colorAnimation.setDuration(1000);
                         colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -45,32 +46,6 @@ public class ColorGridTask extends AsyncTask<Void, Void, Void> {
 
                         });
                         colorAnimation.start();
-                        try {
-                            Integer colorFrom1 = holder.name.getCurrentTextColor();
-                            Integer colorTo1 = palette.getVibrantSwatch().getBodyTextColor();
-                            colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom1, colorTo1);
-                            colorAnimation.setDuration(800);
-                            colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                                @Override
-                                public void onAnimationUpdate(ValueAnimator animator) {
-                                    holder.name.setTextColor((Integer) animator.getAnimatedValue());
-                                }
-                            });
-                            colorAnimation.start();
-                            Integer colorFrom2 = holder.author.getCurrentTextColor();
-                            Integer colorTo2 = palette.getVibrantSwatch().getTitleTextColor();
-                            colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom2, colorTo2);
-                            colorAnimation.setDuration(800);
-                            colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                                @Override
-                                public void onAnimationUpdate(ValueAnimator animator) {
-                                    holder.author.setTextColor((Integer) animator.getAnimatedValue());
-                                }
-                            });
-                            colorAnimation.start();
-                        } catch (NullPointerException e) {
-                            e.printStackTrace();
-                        }
                     }
                 });
         return null;

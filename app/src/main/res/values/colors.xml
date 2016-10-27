@@ -13,4 +13,5 @@
     <color name="colorDarkPrimaryDark">#3949ab</color>
     <color name="colorDarkAccent">#00c853</color>
     <color name="card_grey_dark_theme">#747D80</color>
+    <color name="card_color">#09314b</color>
 </resources>

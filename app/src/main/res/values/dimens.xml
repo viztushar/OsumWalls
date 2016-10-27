@@ -7,5 +7,15 @@
     <dimen name="small_padding">8.0dip</dimen>
     <dimen name="mat_text_subhead">16.0sp</dimen>
     <integer name="wall_columns">2</integer>
-    <dimen name="appbar_elevation">4dp</dimen>
+    <dimen name="appbar_elevation">6dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="grid_height">68dp</dimen>
+    <dimen name="grid_padding">16dp</dimen>
+    <dimen name="grid_textsize">16sp</dimen>
+    <dimen name="grid_textsizesmall">12sp</dimen>
+    <dimen name="content_inset">16dp</dimen>
+    <dimen name="no_con">32dp</dimen>
+    <dimen name="no_con_text">14dp</dimen>
 </resources>

@@ -3,8 +3,11 @@ package com.viztushar.osumwalls.activities;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
+import android.support.annotation.ColorInt;
 import android.support.annotation.LayoutRes;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.StyleRes;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
@@ -13,6 +16,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.afollestad.materialdialogs.color.ColorChooserDialog;
 import com.viztushar.osumwalls.R;
 
 /**
@@ -30,10 +34,11 @@ public abstract class AppCompatPreferenceActivity extends PreferenceActivity {
         super.onCreate(savedInstanceState);
         int horizontalMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2, getResources().getDisplayMetrics());
         int verticalMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2, getResources().getDisplayMetrics());
-        int topMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, (int) getResources().getDimension(R.dimen.activity_vertical_margin) + 30, getResources().getDisplayMetrics());
+        int topMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, (int) getResources().getDimension(R.dimen.activity_vertical_margin) + 25, getResources().getDisplayMetrics());
         getListView().setPadding(horizontalMargin, topMargin, horizontalMargin, verticalMargin);
 
     }
+
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -114,4 +119,5 @@ public abstract class AppCompatPreferenceActivity extends PreferenceActivity {
         }
         return mDelegate;
     }
+
 }

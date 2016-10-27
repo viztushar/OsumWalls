@@ -3,18 +3,35 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory android:title="General">
-        <Preference
+       <!-- <Preference
             android:key="join_community"
             android:summary="@string/join_com"
-            android:title="Join Google+ Community"/>
+            android:title="Join Google+ Community"/>-->
+        <Preference
+            android:key="rate_app"
+            android:summary="@string/rate_desc"
+            android:title="@string/rate_title"/>
+        <Preference
+            android:key="donate_app"
+            android:summary="@string/coll_desc"
+            android:title="@string/coll_title"/>
+
+
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="UI">
+    <PreferenceCategory android:title="@string/pub_title">
+        <Preference
+            android:key="pub_one"
+            android:summary="@string/pub_one_dec"
+            android:title="@string/pub_one"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Interface">
 
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="dark_theme"
-            android:summary="use Dark theme"
+            android:summary="Use Dark Theme"
             android:title="Dark Theme"/>
 
         <SwitchPreference
@@ -49,8 +66,33 @@
             android:summary="@string/licenses_wall_dec"
             android:title="@string/licenses_wall"/>
 
-        <Preference
+       <!-- <Preference
             android:key="licenses_libs"
-            android:title="@string/licenses_libs"/>
+            android:title="@string/licenses_libs"/>-->
+    </PreferenceCategory>
+    <!--<PreferenceCategory android:title="Live Wall Switcher">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="live_run"
+            android:summary="@string/pref_live_wall_desc"
+            android:title="@string/pref_live_wall_title" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="offline_mode"
+            android:summary="@string/pref_offline_desc"
+            android:title="@string/pref_offline_title" />
+
+    </PreferenceCategory>-->
+
+    <PreferenceCategory android:title="Miscellaneous ">
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="open_to_walls"
+            android:summary="@string/pref_open_to_walls_desc"
+            android:title="@string/pref_open_to_walls_title" />
+
+
     </PreferenceCategory>
 </PreferenceScreen>

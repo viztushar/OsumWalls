@@ -12,26 +12,25 @@
     android:layout_height="wrap_content"
     android:drawSelectorOnTop="true"
     android:layout_margin="2dp"
-    android:background="@color/card_color"
     android:foreground="?android:attr/selectableItemBackground">
 
     <RelativeLayout
         android:id="@+id/wall_real_background"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@color/card_color">
+        android:background="@android:color/white">
 
 
         <ImageView
             android:id="@+id/wall_grid_art"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/wall_grid_view_height"
-            android:transitionName="wall"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop"
+            android:transitionName="wall"/>
 
         <ProgressBar
             android:id="@+id/progressBar_wall_grid"
-            style="?android:attr/progressBarStyle"
+            style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/wall_grid_art"
@@ -43,26 +42,26 @@
 
         <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="@dimen/grid_height"
+            android:layout_height="wrap_content"
             android:visibility="visible"
             android:layout_below="@+id/wall_grid_art">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="@dimen/grid_padding">
+                android:orientation="vertical">
 
         <TextView
             android:id="@+id/wall_grid_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/wall_grid_art"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
             android:singleLine="true"
             android:text="GridName"
-            android:textColor="@color/white"
-            android:textSize="@dimen/grid_textsize"
-            android:textStyle="bold"
+            android:textColor="#000"
+            android:textSize="18dp"
             tools:ignore="ObsoleteLayoutParam" />
 
         <TextView
@@ -70,9 +69,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/wall_grid_name"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="2dp"
             android:singleLine="true"
-            android:textColor="@color/white"
-            android:textSize="@dimen/grid_textsizesmall"
             android:text="GridDesc" />
 
             </LinearLayout>

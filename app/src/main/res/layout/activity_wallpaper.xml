@@ -20,6 +20,12 @@
         android:scaleType="centerCrop"
         android:transitionName="wall"/>
 
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
     <LinearLayout
         android:id="@+id/wallbg"
         android:layout_width="match_parent"
@@ -41,15 +47,18 @@
             android:singleLine="true"
             android:text="Wallpaper"
             android:textColor="@color/textColorPrimary"
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp"/>
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="42dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingLeft="16dp"
-            android:paddingRight="16dp">
+            android:paddingRight="16dp"
+            android:layout_marginBottom="12dp">
 
             <LinearLayout
                 android:id="@+id/download"
@@ -58,26 +67,65 @@
                 android:layout_weight="1"
                 android:background="?attr/selectableItemBackground"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="vertical"
+                android:layout_gravity="center_horizontal">
 
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_gravity="center_horizontal"
                     android:tint="@color/textColorPrimary"
                     app:srcCompat="@drawable/ic_file_download_black_24dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
+                    android:layout_gravity="center_horizontal"
                     android:text="Download"
+                    android:textStyle="bold"
                     android:textColor="@color/textColorSecondary"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:background="#71FFFFFF"/>
+
+            <LinearLayout
+                android:id="@+id/fav"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_gravity="center_horizontal">
+
+                <ImageView
+                    android:id="@+id/favicon"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:tint="@color/textColorPrimary"
+                    android:layout_gravity="center_horizontal"
+                    app:srcCompat="@drawable/ic_removefromfav"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/fav"
+                    android:textStyle="bold"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
+
+            <LinearLayout
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:background="#71FFFFFF"/>
             <LinearLayout
                 android:id="@+id/apply"
                 android:layout_width="0dp"
@@ -85,28 +133,31 @@
                 android:layout_weight="1"
                 android:background="?attr/selectableItemBackground"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="vertical"
+                android:layout_gravity="center_horizontal">
 
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
                     android:tint="@color/textColorPrimary"
+                    android:layout_gravity="center_horizontal"
                     app:srcCompat="@drawable/ic_done_all_black_24dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
+                    android:layout_gravity="center_horizontal"
                     android:text="Apply"
+                    android:textStyle="bold"
                     android:textColor="@color/textColorSecondary"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fav_fab"

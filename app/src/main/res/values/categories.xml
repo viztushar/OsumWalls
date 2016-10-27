@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- nav string -->
+    <string name="nav_all">All</string>
+    <string name="nav_new">New</string>
+    <string name="nav_one">Dope</string>
+    <string name="nav_two">Material</string>
+    <string name="nav_three">Minimal</string>
+    <string name="nav_others">Others</string>
+    <string name="nav_setting">Settings</string>
+
+    <string name="nav_favorites">Favorites</string>
+    <string name="nav_material">Material</string>
+    <string name="nav_landscapes">Landscapes</string>
+    <string name="nav_nature">Nature</string>
+    <string name="nav_sea">Sea</string>
+    <string name="nav_cities">Cities</string>
+    <string name="nav_vintage">Vintage</string>
+
+    <!-- wall string -->
+    <string name="wall_all">all</string>
+    <string name="wall_new">new</string>
+    <string name="wall_one">dope</string>
+    <string name="wall_two">material</string>
+    <string name="wall_three">minimal</string>
+</resources>

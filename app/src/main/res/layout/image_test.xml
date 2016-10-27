@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff">
+
+    <ImageView
+        android:id="@+id/noConnectionImage"
+        android:layout_width="285dp"
+        android:layout_height="285dp"
+        android:layout_gravity="center|center_horizontal"
+        android:contentDescription="No Connection Image"
+        android:foregroundGravity="center"
+        android:indeterminate="true"
+        android:src="@drawable/fav"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="107dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center|center_horizontal"
+        android:layout_marginTop="42dp"
+        android:foregroundGravity="center"
+        android:text="@string/no_con_text"
+        android:textAlignment="center"
+        android:textSize="@dimen/no_con_text"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|center_horizontal"
+        android:foregroundGravity="center"
+        android:text="@string/noc"
+        android:textSize="@dimen/no_con"
+        android:textStyle="bold"
+        android:layout_below="@+id/noConnectionImage"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>

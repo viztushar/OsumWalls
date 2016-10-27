@@ -1,59 +1,49 @@
 <resources>
     <string name="app_name">Osum Walls</string>
-    <string name="title_activity_settings">Settings</string>
 
+    <!--Wallpaper url-->
     <string name="wall_url">http://pastebin.com/raw/ju6VMtXx</string>
-    <string name="wallpaper_downloaded">Wallpaper was downloaded to: %1$s</string>
-    <string name="error">Error</string>
-    <string name="no_conn_title">No connection found</string>
 
-    <string name="md_error_label">@string/error</string>
-    <string name="md_storage_perm_error">You have not granted the \"Read External Storage\" permission to %1$s, which is needed to complete this action.</string>
-    <!--Wallpaper folder path-->
+     <!--Wallpaper folder path-->
     <string name="walls_save_location">"/Osum Wall/Wallpapers/"</string>
-    <string name="walls_downloading">Downloading</string>
-
-    <string name="open">open</string>
-    <string name="close">close</string>
-    <string name="share">Share Theme</string>
-    <string name="sendemail">Email Developer</string>
-    <string name="changelog">See Changelog</string>
-
-    <!-- nav -->
-    <string name="nav_all">All</string>
-    <string name="nav_new">New</string>
-    <string name="nav_favorites">Favorites</string>
-    <string name="nav_material">Material</string>
-    <string name="nav_landscapes">Landscapes</string>
-    <string name="nav_nature">Nature</string>
-    <string name="nav_sea">Sea</string>
-    <string name="nav_cities">Cities</string>
-    <string name="nav_vintage">Vintage</string>
-    <string name="nav_others">Others</string>
-    <string name="nav_setting">Setting</string>
 
 
     <!-- setting strings -->
-    <string name="join_com">Join Absolutely Wallpapers community for feedback, reporting issues also to support our work and to stay tuned about upcoming updates.</string>
-    <string name="join_com_link">https://plus.google.com/u/1/communities/115025516018297483498</string>
-    <string name="colored_navbar_title">Colored Navigation Bar</string>
-    <string name="colored_navbar_dec">Provide color for navigation bar(Lollipop and above)</string>
-    <string name="dev_title">Developers</string>
-    <string name="dev_one">Tushar Parmar</string>
-    <string name="dev_one_dec"></string>
-    <string name="dev_one_link">https://plus.google.com/+viztushar</string>
-    <string name="dev_two">ERC Software</string>
-    <string name="dev_two_dec"></string>
-    <string name="dev_two_link">https://plus.google.com/+EthanCannon10</string>
+    <string name="join_com">Join community for feedback, reporting issues also to support our work and to stay tuned about upcoming updates.</string>
 
-    <!-- licenses -->
-    <string name="licenses_title">Licenses</string>
-    <string name="licenses_wall">Copyright</string>
-    <string name="licenses_wall_dec">Wallpapers are licensed under Creative Commons Attribution 4.0 International License. All wallpapers have copyright to their original creators.</string>
-    <string name="licenses_libs">Open source library</string>
+    <string name="join_com_link">https://plus.google.com/u/1/communities/</string>
+
 
     <!-- app ver -->
     <string name="ver">v2.2</string>
+
+    <!-- your email id-->
+    <string name="email">yourname@example.com</string>
+
+    <!-- setting strings -->
+    <string name="rate_title">Rate App</string>
+    <string name="rate_desc">Rate Osum Walls on the play store. It would really mean a lot too us</string>
+    <string name="rate_link_app">market://details?id=</string>
+    <string name="rate_link_web">https://play.google.com/store/apps/details?id=</string>
+
+    <!-- donate -->
+    <string name="donate_title">Support Development</string>
+    <string name="donate_desc">Show your generosity and appreciation by purchasing our donation app</string>
+    <string name="donate_link_app">market://details?id=</string>
+    <string name="donate_link_web">https://play.google.com/store/apps/details?id=</string>
+
+
+    <string name="version">Version 2.2</string>
+
+    <!-- about -->
+    <string name="coll_title">Google+</string>
+    <string name="coll_desc">Ultimate Collection of Wallpapers.</string>
+    <string name="coll_link">https://plus.google.com/collection/</string>
+    <string name="pub_one">Your Name</string>
+    <string name="pub_one_dec">Hi my name is xyz.</string>
+    <string name="pub_title">Publisher</string>
+    <string name="pub_link">https://plus.google.com/+yourname</string>
+
 
 
 </resources>
