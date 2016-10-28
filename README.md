@@ -11,9 +11,9 @@ An Absolutely Osum app
 
 ##Contributors
 This app has been developed by the following:
-- Tushar Parmar
-- ERC Software
-- James Fenn
+- [Tushar Parmar](https://github.com/viztushar)
+- [ERC Software](https://github.com/ercsoftware11)
+- [James Fenn](https://github.com/TheAndroidMaster)
 
 License
 =======
