@@ -1,5 +1,19 @@
 # OsumWalls
+An Absolutely Osum app
 
+##Features
+- Material Design Interface
+- Push Notifications
+- Download straight to your gallery, or apply directly to your homescreen
+- Add to favorites
+- Manage app settings
+- Set walls as homescreen or lockscreen
+
+##Contributors
+This app has been developed by the following:
+- Tushar Parmar
+- ERC Software
+- James Fenn
 
 License
 =======
